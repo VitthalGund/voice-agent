@@ -33,10 +33,10 @@ Designed for low-latency (< 2s) interactions even on low-bandwidth networks, ens
 ```mermaid
 graph TD
     User([User 👨‍🌾]) <-->|Voice/WebSocket| Frontend(Next.js Voice UI)
-    Frontend <-->|Audio Blob| API[/api/chat Loop]
+    Frontend <-->|Audio Blob| API
     
     subgraph "Serverless Backend"
-        API --> STT(Google Speech-to-Text)
+        API["/api/chat Loop"] --> STT(Google Speech-to-Text)
         STT --> Agent(LangChain Master Agent)
         
         Agent <-->|State/Context| Redis[(Upstash Redis)]
